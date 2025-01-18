@@ -9,22 +9,31 @@
     }
     </style>
 <body>
-
+    <button id="add-iframe-button">Try it</button>
+    <div id="iframe-container"></div>
     <script>
-        function myFunction() {
-          var x = document.getElementById("myDIV");
-          if (x.style.display === "none") {
-            x.style.display = "block";
-          } else {
-            x.style.display = "none";
-          }
-        }
-        </script>
-<h1>This is a Heading</h1>
-<button onclick="myFunction()">Try it</button>
-<div id="myDIV">
-    <iframe title="test" style="width: 100%; height: 100vh" src="https://creativetech.static.burberry.com/festive-vto-24/live/index.html?productId=80778811&lang=en&country=uk" allow="camera *; autplay *; web-share"  />
-</div>
+        document.getElementById('add-iframe-button').addEventListener('click', function () {
+            // Create an iframe element
+           
+            const container = document.getElementById('iframe-container');
+            const existingIframe = container.querySelector('iframe');
+
+            if(existingIframe) {
+                container.removeChild(existingIframe);
+                return;
+            }
+            const iframe = document.createElement('iframe');
+            // Set attributes
+            iframe.src = "https://creativetech.static.burberry.com/festive-vto-24/live/index.html?productId=80778811&lang=en&country=uk";
+            iframe.title = "Dynamic iFrame Example";
+            iframe.allow = "camera *; autplay *; web-share";
+            iframe.style="width: 100%; height: 100vh"
+
+            // Append the iframe to a container
+            document.getElementById('iframe-container').appendChild(iframe);
+        });
+    </script>
+
 </body>
     
 
